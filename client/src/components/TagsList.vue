@@ -1,10 +1,19 @@
 <template>
-<v-container>
+  <v-container>
+    <v-flex>
+      <v-list
+        v-for="(tag, index) in tags"
+        :key="index"
+      >
+        <v-list-tile>
+          <v-list-title>
+            {{ tag.name }}
+          </v-list-title>
+        </v-list-tile>
 
-  <v-flex>
-
-  </v-flex>
-</v-container>
+      </v-list>
+    </v-flex>
+  </v-container>
 </template>
 
 <script>
