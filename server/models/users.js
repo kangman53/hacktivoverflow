@@ -36,7 +36,13 @@ const userSchema = new Schema({
   password: {
     type: String,
     match: [/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/, 'Password must contains minimum six characters, at least one uppercase letter, one lowercase letter and one number']
-  }
+  },
+  tags: [
+    {
+      type: 'ObjectId',
+      ref: 'Tag'
+    }
+  ]
 }, {
   timestamps: {}
 })

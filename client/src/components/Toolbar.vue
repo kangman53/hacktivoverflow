@@ -5,9 +5,16 @@
     fixed
     clipped-left
   >
-    <router-link class="title ml-3 mr-5 white--text" to="/" style="text-decoration: none">Hacktiv&nbsp;
+    <router-link
+      class="title ml-3 mr-5 white--text"
+      to="/"
+      style="text-decoration: none"
+    >Hacktiv&nbsp;
       <span class="font-weight-light">Overflow</span>
     </router-link>
+    <v-toolbar-items class="mr-2" v-if="user.token">
+      <WatchedTags :user="user" />
+    </v-toolbar-items>
     <v-text-field
       solo
       flat
@@ -17,7 +24,10 @@
     ></v-text-field>
     <v-spacer></v-spacer>
     <v-toolbar-items v-if="user.token">
-      <v-btn flat to="/questions/add">
+      <v-btn
+        flat
+        to="/questions/add"
+      >
         <v-icon color="white">add_comment</v-icon>
         <span class="ml-2 white--text">Add Question</span>
       </v-btn>
@@ -27,8 +37,8 @@
         class="font-weight-black"
         @click="logout"
       >Sign Out</v-btn>
-      </v-toolbar-items>
-      <v-toolbar-items v-else>
+    </v-toolbar-items>
+    <v-toolbar-items v-else>
       <v-btn
         flat
         color="red darken-2"
@@ -45,7 +55,11 @@
 </template>
 
 <script>
+import WatchedTags from '@/components/WatchedTags'
 export default {
+  components: {
+    WatchedTags
+  },
   methods: {
     logout () {
       this.$swal({

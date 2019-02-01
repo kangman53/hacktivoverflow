@@ -6,13 +6,15 @@ module.exports = {
     let payload = jwt.jwtVerify(req.headers.token)
     if (payload) {
       User.findById(payload.id)
+      .populate('tags')
         .then(user => {
           if (user) {
             req.user = {
               id: user._id,
               email: user.email,
               fullname: user.fullname,
-              token: req.headers.token
+              token: req.headers.token,
+              tags: user.tags
             }
             next();
           } else {

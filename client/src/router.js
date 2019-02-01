@@ -74,6 +74,11 @@ const router = new Router({
           path: ':id',
           name: 'question-detail',
           component: () => import('./components/QuestionDetail')
+        },
+        {
+          path: 'tagged/:tagId',
+          name: 'question-tag',
+          component: () => import('./components/Content')
         }
       ]
     },

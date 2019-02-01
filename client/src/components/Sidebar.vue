@@ -25,14 +25,14 @@
 export default {
   data () {
     return {
+
       drawer: true,
       items: [
         { icon: 'home', text: 'Home', to: '/' },
         { divider: true },
         { heading: 'Public' },
         { icon: 'local_library', text: 'Hacktiv Overflow', to: '/questions' },
-        { icon: 'label_important', text: 'Tags' },
-        { icon: 'group', text: 'Users' }
+        { icon: 'label_important', text: 'Tags', to: '/tags' }
       ]
     }
   }

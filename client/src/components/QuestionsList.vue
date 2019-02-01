@@ -45,7 +45,11 @@
                           label
                           outline
                           slot-scope="{  }"
-                        > {{ tag.name }}</v-chip>
+                        >
+                        <router-link :to="{name: 'question-tag', params: {tagId: tag._id}}" style="text-decoration: none">
+                        {{ tag.name }}
+                        </router-link>
+                        </v-chip>
                       </v-item>
                     </v-item-group>
                     <v-spacer></v-spacer>

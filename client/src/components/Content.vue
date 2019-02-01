@@ -18,9 +18,20 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch('getQuestions')
+    if (this.$route.params.tagId) {
+      this.$store.dispatch('getQuestionsByTag', this.$route.params.tagId)
+    } else {
+      this.$store.dispatch('getQuestions')
+    }
   },
-  computed: {
+  watch: {
+    '$route' () {
+      if (this.$route.params.tagId) {
+        this.$store.dispatch('getQuestionsByTag', this.$route.params.tagId)
+      } else {
+        this.$store.dispatch('getQuestions')
+      }
+    }
   }
 }
 </script>

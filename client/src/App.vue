@@ -31,6 +31,7 @@ export default {
       })
         .then(({ data }) => {
           this.$store.dispatch('loginSuccess', data)
+          this.$store.dispatch('getTags')
         })
         .catch(({ response }) => {
           localStorage.removeItem('token')

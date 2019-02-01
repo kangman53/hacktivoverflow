@@ -26,6 +26,9 @@ export default new Vuex.Store({
     },
     getTags (state, data) {
       state.tags = data
+    },
+    updateTags (state, data) {
+      state.user.tags = data.tags
     }
   },
   actions: {
@@ -54,6 +57,18 @@ export default new Vuex.Store({
         .catch(({ response }) => {
           console.log(response)
         })
+    },
+    getQuestionsByTag ({ commit }, tagId) {
+      local(`questions/tagged/${tagId}`)
+        .then(({ data }) => {
+          commit('getQuestions', data)
+        })
+        .catch(({ response }) => {
+          console.log(response)
+        })
+    },
+    updateTags ({ commit }, data) {
+      commit('updateTags', data)
     }
   }
 })

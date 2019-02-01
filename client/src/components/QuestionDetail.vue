@@ -58,10 +58,18 @@
                     :key="n"
                   >
                     <v-chip
+                      :to="{name: 'question-tag', params: {tagId: tag._id}}"
                       label
                       outline
                       slot-scope="{  }"
-                    > {{ tag.name }}</v-chip>
+                    >
+                      <router-link
+                        :to="{name: 'question-tag', params: {tagId: tag._id}}"
+                        style="text-decoration: none"
+                      >
+                        {{ tag.name }}
+                      </router-link>
+                    </v-chip>
                   </v-item>
                 </v-item-group>
                 <v-menu

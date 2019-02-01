@@ -47,9 +47,26 @@ class QuestionController {
       })
   }
 
+  static tag (req, res) {
+    Question.find({
+      tags: req.params.tagId
+    })
+    .populate('tags')
+    .populate({ path: 'userId', select:'fullname' })
+    .sort({_id: 'descending'})
+    .exec()
+      .then(questions => {
+        res.status(200).json(questions)
+      })
+      .catch(error => {
+        res.status(500).json({
+          error: 'INTERNAL SERVER ERROR',
+          message: error.message
+        })
+      })
+  }
+
   static addQuestion (req, res) {
-    console.log(req.body.tags);
-    
     TagController.generator(req.body.tags)
       .then(results => {
         let tags = results.map( r => {
